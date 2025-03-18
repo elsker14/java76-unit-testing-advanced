@@ -1,0 +1,58 @@
+The strategy behind test data in unit testing is to ensure that the tests are thorough, meaningful, and cover all possible edge cases. Choosing the right data for unit tests is crucial to achieving reliable, accurate tests that validate the functionality of the code. Here’s how to approach it:
+
+1. Understand the Purpose of the Test
+Positive Testing: The goal is to test the functionality with valid inputs that the system is expected to handle.
+Negative Testing: Test with invalid or unexpected inputs to see how the system handles errors.
+Edge Cases: Test for extreme or boundary conditions that may cause errors or unexpected behavior (e.g., empty lists, max values, etc.).
+Performance and Load Testing: For some applications, you may need to test with large datasets or in performance-critical scenarios.
+
+2. Types of Test Data to Consider
+Valid Data: Data that is within the expected range or format and should produce correct output. Examples:
+
+For a function calculating discounts: Input could be valid percentages (0-100%), amounts, etc.
+Invalid Data: Data that is outside the expected range or violates business logic, which should trigger error handling. Examples:
+
+For the discount function, inputs could be negative values, percentages over 100, or non-numeric inputs.
+Boundary Data: Data that represents the boundary values (upper and lower) of input parameters. This is important for checking off-by-one errors.
+
+For a discount function, boundary data might be 0% and 100%, as these are the limits for a valid percentage.
+Edge Cases: These are often scenarios where the behavior is difficult to predict, such as:
+
+Empty inputs (e.g., empty string, null, empty list).
+Large inputs (e.g., an extremely large number, very long strings).
+Special cases like leap years, zero values, or maximal/minimal values for certain types.
+Random Data: Sometimes, randomly generated test data can help identify issues that don't appear in the well-understood valid or invalid cases.
+
+Special Values: For example, test data like:
+
+Null values where the function is expected to handle it.
+Default values (e.g., 0, false, or an empty string) where applicable.
+Special values such as NaN for numbers or Infinity in certain cases.
+Mocked Data: For cases where the unit test depends on external services (e.g., database calls, API calls), mocked data or stubs can be used.
+
+3. Data Coverage Considerations
+Code Path Coverage: Ensure that the data you choose tests the various code paths. If the function has multiple conditional branches, choose test data that covers each of these branches.
+
+Error Handling Coverage: Make sure that the test data includes cases where errors are expected. For instance, if a function expects a non-null value and receives null, it should handle the case appropriately.
+
+Test Repeatability: The data should be deterministic (i.e., the same input always produces the same output) so tests can be repeated reliably.
+
+Performance and Scalability: When testing code for scalability or performance, use data that represents high-volume use cases (e.g., large arrays, data collections, etc.).
+
+4. Test Data Categories
+Common Cases: These represent typical, everyday use cases.
+Uncommon Cases: Unusual but valid inputs that may expose rare bugs.
+Edge Cases: Extreme cases that test the boundaries of what’s acceptable.
+
+5. Best Practices for Choosing Test Data
+Realistic Data: Ideally, use data that mirrors what will be used in production (i.e., realistic values). If the data is too far from reality, the tests might not represent the true behavior.
+Small and Focused: Each unit test should focus on testing a small, specific piece of logic. Choose test data that isolates the feature or behavior you're testing.
+Document Assumptions: Make clear the assumptions you’re making about your test data, especially if you are using mock data or edge cases.
+
+6. Example of Test Data Selection
+For a function that checks if an email address is valid:
+
+Valid Test Data: "test@example.com", "user123@domain.org"
+Invalid Test Data: "test@", "@example.com", "plainaddress", null
+Boundary Data: A very long email address (e.g., exceeding 256 characters).
+Edge Case Data: Empty string (""), special characters like "!#$%&'*+/=?^_{|}~-@example.com`.
