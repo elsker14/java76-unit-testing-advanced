@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class UtilityTest {
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 3, 5, 7, 9, 11, 13, 14, -3, -7, -9})
+    @ValueSource(ints = {1, 3, 5, 7, 9, 11, 13, -3, -7, -9})
     public void testIsOddHappyFlow(int number) {
         assertThat(Utility.isOdd(number))
                 .withFailMessage("isOddHappyFlow should return true if number is odd")
@@ -18,7 +18,7 @@ public class UtilityTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {2, 4, 6, 8, 1, -10, -2, -4})
+    @ValueSource(ints = {2, 4, 6, 8, -10, -2, -4})
     public void testIsOddBadFlow(int number) {
         assertThat(Utility.isOdd(number))
                 .isFalse();
