@@ -12,12 +12,12 @@ public class AnimalService {
         this.animalRepository = animalRepository;
     }
 
-    public Animal createAnimal(Animal animal) {
+    public void createAnimal(Animal animal) {
         if(animal.getName() == null || animal.getType() == null) {
             throw new IllegalArgumentException("Name and type are required");
         }
 
-        return animalRepository.save(animal);
+        animalRepository.save(animal);
     }
 
     public Animal retrieveAnimalByIdAndType(int id, String type) {
