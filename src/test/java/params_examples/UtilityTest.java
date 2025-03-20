@@ -1,6 +1,7 @@
 package params_examples;
 
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -59,9 +60,9 @@ public class UtilityTest {
     public void testIsInstanceOfHappyFlow(Class<?> clazz) {
         Object testObject;
 
-        if(clazz.equals(String.class)) {
+        if (clazz.equals(String.class)) {
             testObject = "test";
-        } else if(clazz.equals(Integer.class)) {
+        } else if (clazz.equals(Integer.class)) {
             testObject = 1;
         } else {
             testObject = 2.22;
@@ -69,5 +70,11 @@ public class UtilityTest {
 
         assertThat(testObject).isNotNull();
         assertThat(Utility.isInstanceOf(testObject, clazz)).isTrue();
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(PrimeNumbersDataProvider.class)
+    public void testIsPrime(int number, boolean expected) {
+        assertThat(Utility.isPrime(number)).isEqualTo(expected);
     }
 }
